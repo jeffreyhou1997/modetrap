@@ -8,19 +8,19 @@ import modetrap_sub
 
 
 # Number of beads
-nbeads = 1
+#nbeads = 1
 
-narg=len(sys.argv)
-if narg >=2 :
-    nbeads = int(sys.argv[1])
+#narg=len(sys.argv)
+#if narg >=2 :
+    #nbeads = int(sys.argv[1])
 
-if nbeads == 1:
-    ncases = 5
-elif nbeads == 2:
-    ncases = 3
-else:
-    print 'Case for',nbeads,'not supported'
-    exit()
+#if nbeads == 1:
+    #ncases = 5
+#elif nbeads == 2:
+    #ncases = 3
+#else:
+    #print 'Case for',nbeads,'not supported'
+    #exit()
 
 # This is a wrapper for modetrap that insures that the bead locatations ('xpert')
 # are sorted into increasing order.
