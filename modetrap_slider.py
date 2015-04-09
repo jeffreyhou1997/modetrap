@@ -103,7 +103,6 @@ periods =  mode_wrap(n1,n2,loc,amp,width)
 per,dp = dp_calc(periods)
 
 l, = plot(per,dp, 'ro-', lw=2, color='red')
-
 per0, dp0 = test_data(0)
 l0, = plot(per0,dp0, 'ko--', lw=3, color='black', markersize=10, mfc='none')
 
@@ -160,31 +159,6 @@ for i in np.arange(nbeads):
     slvec[i].on_changed(update)
     savec[i].on_changed(update)
     swvec[i].on_changed(update)
-
-resetax = axes([0.025, 0.100, 0.075, 0.06])
-button = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
-def reset(event):
-    for i in np.arange(nbeads):
-        slvec[i].reset()
-        savec[i].reset()
-        swvec[i].reset()
-button.on_clicked(reset)
-
-rax = axes([0.025, 0.3, 0.12, 0.50], axisbg=axcolor, aspect='equal')
-blabs = []
-for i in np.arange(1,ncases+1):
-    blabs.append('Case {0}'.format(i))
-
-#radio = RadioButtons(rax, ['Case 1', 'Case 2', 'Case 3'], active=0)
-radio = RadioButtons(rax, blabs, active=0)
-def colorfunc(label):
-    datakey = int(label[-2:])
-    per0, dp0 = test_data(datakey-1)
-    l0.set_xdata(per0)
-    l0.set_ydata(dp0)
-    #l.set_color(label)
-    draw()
-radio.on_clicked(colorfunc)
 
 show()
 
