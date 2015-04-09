@@ -156,10 +156,10 @@ def update(val):
     l.set_ydata(dp)
     draw()
 
-#for i in np.arange(nbeads):
-    #slvec[i].on_changed(update)
-    #savec[i].on_changed(update)
-    #swvec[i].on_changed(update)
+for i in np.arange(nbeads):
+    slvec[i].on_changed(update)
+    savec[i].on_changed(update)
+    swvec[i].on_changed(update)
 
 #resetax = axes([0.025, 0.100, 0.075, 0.06])
 #button = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
