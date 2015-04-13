@@ -152,7 +152,6 @@ def update(val):
         widvec.append(swvec[i].val)
     periods =  mode_wrap(n1,n2,locvec,ampvec,widvec)
     per,dp = dp_calc(periods)
-    l.set_xdata(per)
     l.set_ydata(dp)
     draw()
 
