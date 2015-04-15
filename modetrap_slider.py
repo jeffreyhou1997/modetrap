@@ -5,25 +5,27 @@ matplotlib.use('TkAgg')
 from pylab import *
 from matplotlib.widgets import Slider, Button, RadioButtons
 import modetrap_sub
+import numpy as np
 
 
 # Number of beads
-#nbeads = 1
+nbeads = 1
 
-#narg=len(sys.argv)
-#if narg >=2 :
-    #nbeads = int(sys.argv[1])
+narg=len(sys.argv)
+if narg >=2 :
+    nbeads = int(sys.argv[1])
 
-#if nbeads == 1:
-    #ncases = 5
-#elif nbeads == 2:
-    #ncases = 3
-#else:
-    #print 'Case for',nbeads,'not supported'
-    #exit()
+if nbeads == 1:
+    ncases = 5
+elif nbeads == 2:
+    ncases = 3
+else:
+    print 'Case for',nbeads,'not supported'
+    exit()
 
 # This is a wrapper for modetrap that insures that the bead locatations ('xpert')
-# are sorted into increasing order.
+# are sorted into increasing order. It returns a list (np.array, actually) of periods
+# of oscillation for modes with overtone numbers between n1 and n2
 def mode_wrap(n1,n2,xpert,amp,width):
     xp=np.array(xpert)
     ap=np.array(amp)
@@ -43,24 +45,24 @@ def dp_calc(periods):
     #return per,dp
     return i0+1,dp
 
-#def test_data(i):
-    #if nbeads==1:
-    #    plists = [ 
-    #        [ 0.27, 0.78, 0.05 ], 
-    #        [ 0.13, 1.44, 0.02 ], 
-    #        [ 0.36, 0.55, 0.03 ],
-    #        [ 0.50, 1.35, 0.04 ],
-    #        [ 0.12, 1.73, 0.07 ] 
-    #        ]
-    #elif nbeads==2:
-    #    plists = [ 
-    #        [ 0.27, 0.78, 0.05, 0.23, 0.94, 0.03 ], 
-    #        [ 0.10, 1.41, 0.12, 0.13, 1.44, 0.02 ], 
-    #        [ 0.29, 1.32, 0.04, 0.35, 1.50, 0.06 ],
-    #        ]
-    #else:
-    #    print 'Case for',nbeads,'not supported'
-    #    exit()
+def test_data(i):
+    if nbeads==1:
+        plists = [ 
+            [ 0.27, 0.78, 0.05 ], 
+            [ 0.13, 1.44, 0.02 ], 
+            [ 0.36, 0.55, 0.03 ],
+            [ 0.50, 1.35, 0.04 ],
+            [ 0.12, 1.73, 0.07 ] 
+            ]
+    elif nbeads==2:
+        plists = [ 
+            [ 0.27, 0.78, 0.05, 0.23, 0.94, 0.03 ], 
+            [ 0.10, 1.41, 0.12, 0.13, 1.44, 0.02 ], 
+            [ 0.29, 1.32, 0.04, 0.35, 1.50, 0.06 ],
+            ]
+    else:
+        print 'Case for',nbeads,'not supported'
+        exit()
     params = plists[i]
     if nbeads==1:
         periods = mode_wrap(n1,n2,[params[0]],[params[1]],[params[2]])
@@ -161,13 +163,13 @@ for i in np.arange(nbeads):
     savec[i].on_changed(update)
     swvec[i].on_changed(update)
 
-#resetax = axes([0.025, 0.100, 0.075, 0.06])
+#resetax = axes([0.1, 0.100, 0.075, 0.06])
 #button = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
 #def reset(event):
     #for i in np.arange(nbeads):
-    #    slvec[i].reset()
-    #    savec[i].reset()
-    #    swvec[i].reset()
+        #slvec[i].reset()
+        #savec[i].reset()
+        #swvec[i].reset()
 #button.on_clicked(reset)
 
 #rax = axes([0.025, 0.3, 0.12, 0.50], axisbg=axcolor, aspect='equal')
@@ -184,7 +186,7 @@ for i in np.arange(nbeads):
     #l0.set_ydata(dp0)
     #l.set_color(label)
     #draw()
-radio.on_clicked(colorfunc)
+#radio.on_clicked(colorfunc)
 
 show()
 
