@@ -105,7 +105,7 @@ subplots_adjust(left=xleft, bottom=0.35, right=0.975, top=0.95)
 periods =  mode_wrap(n1,n2,loc,amp,width)
 per,dp = dp_calc(periods)
 
-l, = plot(per,dp, 'ro-', lw=2, color='red')
+l, = plot(per,dp, 'ro-', lw=0, color='red')  # linewidth = 0 (not visible)
 
 per0, dp0 = test_data(0)
 l0, = plot(per0,dp0, 'ko--', lw=3, color='black', markersize=10, mfc='none')
