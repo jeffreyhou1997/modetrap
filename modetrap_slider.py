@@ -71,7 +71,7 @@ subplots_adjust(left=0.07, bottom=0.22, right=0.975, top=0.95)
 periods =  mode_wrap(n1,n2,loc)
 per,dp = dp_calc(periods)
 
-l, = plot(per,dp, 'ro-', lw=2, color='red')
+l, = plot(per,dp, 'ro-', lw=0, color='red')
 exampledata = np.loadtxt('exampledata.txt')
 per0 = exampledata[:,0]
 dp0 = exampledata[:,1]
