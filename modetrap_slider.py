@@ -83,10 +83,10 @@ for i in np.arange(1):
     axvec.append(axs)
     if i==0:
         sloc = Slider(axloc, 'Location ',0.0, 1.0, valinit=locvec0[i])
-            
+    
     else:
         sloc = Slider(axloc, '', 0.0, 1.0, valinit=locvec0[i])
-            
+    
     slvec.append(sloc)
 
 def update(val):
@@ -95,14 +95,12 @@ def update(val):
     #print outputdata
     l.set_xdata(per)
     var2 = int(np.round(val*100))
-    print var2
+    #print var2
     temparray = outputdata[var2*20:var2*20+20]
     l.set_ydata(temparray)
     draw()
 
 
 slvec[0].on_changed(update)
-
-print arange(1)
 
 show()
