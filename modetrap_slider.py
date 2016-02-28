@@ -35,6 +35,7 @@ def dp_calc(periods):
 n1=1
 n2=21
 # Default/initial parameters for the location, amplitude (mass), and width of the beads.
+
 locvec0 = [0.0]
 
 # Set the initial set of parameters.
@@ -58,6 +59,7 @@ per,dp = dp_calc(periods)
 l, = plot(per,dp, 'ro-', lw=2, color='red')
 exampledata = np.loadtxt('exampledata.txt')
 outputdata = np.loadtxt('output.txt')
+
 per0 = exampledata[:,0]
 dp0 = exampledata[:,1]
 l0, = plot(per0,dp0, 'ko--', lw=3, color='black', markersize=10, mfc='none')
@@ -83,7 +85,7 @@ for i in np.arange(1):
     axvec.append(axs)
     if i==0:
         sloc = Slider(axloc, 'Location ',0.0, 1.0, valinit=locvec0[i])
-    
+
     else:
         sloc = Slider(axloc, '', 0.0, 1.0, valinit=locvec0[i])
     
@@ -99,6 +101,7 @@ def update(val):
     temparray = outputdata[var2*20:var2*20+20]
     l.set_ydata(temparray)
     draw()
+
 
 
 slvec[0].on_changed(update)
